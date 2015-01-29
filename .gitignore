@@ -1,0 +1,8 @@
+*.pyc
+temp/
+front-end/temp/
+front-end/css/prefixed/
+back-end/temp/
+bower_components/
+node_modules/
+*~

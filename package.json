@@ -1,0 +1,27 @@
+{
+  "name": "joyeriasilvia",
+  "version": "1.0.0",
+  "description": "Personal Project about Jewelry",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xtornasol512/joyeriasilvia.git"
+  },
+  "keywords": [
+    "django",
+    "materializecss",
+    "html5"
+  ],
+  "author": "Phyro.IO",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xtornasol512/joyeriasilvia/issues"
+  },
+  "homepage": "https://github.com/xtornasol512/joyeriasilvia",
+  "devDependencies": {
+    "gulp": "^3.8.10"
+  }
+}

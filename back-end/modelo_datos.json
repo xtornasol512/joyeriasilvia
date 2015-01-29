@@ -1,0 +1,19 @@
+{
+    "users": [],
+    "proveedores": [],
+    "clientes": [],
+    "joyas": [
+        "clave",
+        "nombre",
+        "foto",
+        "peso",
+        "precio_publico",
+        "precio_en_pagos",
+        "kilataje",
+        "tipo_de_oro",
+        "precio_oro_en_compra"
+        ],
+    "ventas": [],
+    "deudas": [],
+    "lote_compra":[]
+}
