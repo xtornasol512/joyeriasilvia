@@ -1,0 +1,4 @@
+#django
+django==1.7
+
+south
