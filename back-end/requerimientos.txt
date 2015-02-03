@@ -1,4 +1,26 @@
 #django
-django==1.7
+django==1.7.4
 
+#Con django 1.7 ya no es nesesario
 south
+
+pillow
+
+#Nesesarios para API
+djangorestframework
+markdown
+django-filter
+
+
+#opcionales para la api, aun no se para que serviran
+
+#(3.10+) - YAML content-type support.
+PyYAML
+#(0.3+) - XML content-type support.
+defusedxml
+#(2.0+) and oauth2 (1.5.211+) - OAuth 1.0a support.
+django-oauth-plus
+#(0.2.3+) - OAuth 2.0 support.
+django-oauth2-provider
+#(1.1.1+) - Object level permissions support.
+django-guardian
