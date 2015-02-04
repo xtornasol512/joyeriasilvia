@@ -1,6 +1,10 @@
 #django
 django==1.7.4
 
+flup
+psycopg2
+
+
 #Con django 1.7 ya no es nesesario
 south
 
