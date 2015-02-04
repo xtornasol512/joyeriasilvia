@@ -9,4 +9,4 @@ node_modules/
 
 
 #Configuraciones Locales
-#back-end/silvia/silvia/local_settings.py
+back-end/silvia/silvia/local_settings.py
