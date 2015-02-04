@@ -6,3 +6,7 @@ back-end/temp/
 bower_components/
 node_modules/
 *~
+
+
+#Configuraciones Locales
+back-end/silvia/silvia/local_settings.py
