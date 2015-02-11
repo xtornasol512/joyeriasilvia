@@ -1,41 +1,68 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+from south.utils import datetime_utils as datetime
+from south.db import db
+from south.v2 import SchemaMigration
+from django.db import models
 
-from django.db import models, migrations
-from django.conf import settings
+
+class Migration(SchemaMigration):
+
+    def forwards(self, orm):
+        # Adding model 'Cliente'
+        db.create_table(u'clientes_cliente', (
+            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('nombre', self.gf('django.db.models.fields.CharField')(max_length=255)),
+        ))
+        db.send_create_signal(u'clientes', ['Cliente'])
+
+        # Adding model 'HistorialPago'
+        db.create_table(u'clientes_historialpago', (
+            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('cliente', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['clientes.Cliente'])),
+            ('fecha', self.gf('django.db.models.fields.DateField')(auto_now=True, blank=True)),
+            ('abono', self.gf('django.db.models.fields.DecimalField')(max_digits=8, decimal_places=2)),
+        ))
+        db.send_create_signal(u'clientes', ['HistorialPago'])
+
+        # Adding model 'Deuda'
+        db.create_table(u'clientes_deuda', (
+            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('cliente', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['clientes.Cliente'])),
+            ('deuda', self.gf('django.db.models.fields.DecimalField')(max_digits=9, decimal_places=2)),
+        ))
+        db.send_create_signal(u'clientes', ['Deuda'])
 
 
-class Migration(migrations.Migration):
+    def backwards(self, orm):
+        # Deleting model 'Cliente'
+        db.delete_table(u'clientes_cliente')
 
-    dependencies = [
-        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-    ]
+        # Deleting model 'HistorialPago'
+        db.delete_table(u'clientes_historialpago')
 
-    operations = [
-        migrations.CreateModel(
-            name='Rol',
-            fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('descripcion', models.CharField(max_length=100, null=True, blank=True)),
-                ('nivel', models.IntegerField(null=True, blank=True)),
-            ],
-            options={
-                'verbose_name': 'Rol',
-                'verbose_name_plural': 'Roles',
-            },
-            bases=(models.Model,),
-        ),
-        migrations.CreateModel(
-            name='TipoUsuario',
-            fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('asignacion', models.ForeignKey(to='clientes.Rol')),
-                ('usuario', models.ForeignKey(blank=True, to=settings.AUTH_USER_MODEL, null=True)),
-            ],
-            options={
-                'verbose_name': 'Tipo de Usuario',
-                'verbose_name_plural': 'Tipos de Usuarios',
-            },
-            bases=(models.Model,),
-        ),
-    ]
+        # Deleting model 'Deuda'
+        db.delete_table(u'clientes_deuda')
+
+
+    models = {
+        u'clientes.cliente': {
+            'Meta': {'object_name': 'Cliente'},
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'nombre': ('django.db.models.fields.CharField', [], {'max_length': '255'})
+        },
+        u'clientes.deuda': {
+            'Meta': {'object_name': 'Deuda'},
+            'cliente': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['clientes.Cliente']"}),
+            'deuda': ('django.db.models.fields.DecimalField', [], {'max_digits': '9', 'decimal_places': '2'}),
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'})
+        },
+        u'clientes.historialpago': {
+            'Meta': {'object_name': 'HistorialPago'},
+            'abono': ('django.db.models.fields.DecimalField', [], {'max_digits': '8', 'decimal_places': '2'}),
+            'cliente': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['clientes.Cliente']"}),
+            'fecha': ('django.db.models.fields.DateField', [], {'auto_now': 'True', 'blank': 'True'}),
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'})
+        }
+    }
+
+    complete_apps = ['clientes']

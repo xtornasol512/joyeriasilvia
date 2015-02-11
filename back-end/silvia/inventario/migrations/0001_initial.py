@@ -1,71 +1,89 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+from south.utils import datetime_utils as datetime
+from south.db import db
+from south.v2 import SchemaMigration
+from django.db import models
 
-from django.db import models, migrations
+
+class Migration(SchemaMigration):
+
+    def forwards(self, orm):
+        # Adding model 'Joya'
+        db.create_table(u'inventario_joya', (
+            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('clave', self.gf('django.db.models.fields.CharField')(max_length=15)),
+            ('nombre', self.gf('django.db.models.fields.CharField')(max_length=150, null=True, blank=True)),
+            ('foto', self.gf('django.db.models.fields.files.ImageField')(max_length=100, null=True, blank=True)),
+            ('peso', self.gf('django.db.models.fields.DecimalField')(max_digits=9, decimal_places=3)),
+            ('kilataje', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['inventario.Kilataje'], null=True, blank=True)),
+            ('tipoOro', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['inventario.TipoOro'], null=True, blank=True)),
+            ('proveedor', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['proveedores.Proveedor'])),
+            ('costo', self.gf('django.db.models.fields.DecimalField')(max_digits=9, decimal_places=2)),
+            ('precioOroCompra', self.gf('django.db.models.fields.DecimalField')(max_digits=5, decimal_places=2)),
+            ('fechaCompra', self.gf('django.db.models.fields.DateField')()),
+        ))
+        db.send_create_signal(u'inventario', ['Joya'])
+
+        # Adding model 'Kilataje'
+        db.create_table(u'inventario_kilataje', (
+            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('kilataje', self.gf('django.db.models.fields.CharField')(max_length=50)),
+        ))
+        db.send_create_signal(u'inventario', ['Kilataje'])
+
+        # Adding model 'TipoOro'
+        db.create_table(u'inventario_tipooro', (
+            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('descripcion', self.gf('django.db.models.fields.CharField')(max_length=255)),
+            ('precioActual', self.gf('django.db.models.fields.DecimalField')(max_digits=6, decimal_places=2)),
+        ))
+        db.send_create_signal(u'inventario', ['TipoOro'])
 
 
-class Migration(migrations.Migration):
+    def backwards(self, orm):
+        # Deleting model 'Joya'
+        db.delete_table(u'inventario_joya')
 
-    dependencies = [
-        ('proveedores', '0001_initial'),
-    ]
+        # Deleting model 'Kilataje'
+        db.delete_table(u'inventario_kilataje')
 
-    operations = [
-        migrations.CreateModel(
-            name='Joya',
-            fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('clave', models.CharField(max_length=15)),
-                ('nombre', models.CharField(max_length=150, null=True, blank=True)),
-                ('foto', models.ImageField(null=True, upload_to=b'asets/items/joyas', blank=True)),
-                ('peso', models.DecimalField(max_digits=9, decimal_places=3)),
-                ('costo', models.DecimalField(max_digits=9, decimal_places=2)),
-                ('precioOroCompra', models.DecimalField(max_digits=5, decimal_places=2)),
-                ('fechaCompra', models.DateField()),
-            ],
-            options={
-            },
-            bases=(models.Model,),
-        ),
-        migrations.CreateModel(
-            name='Kilataje',
-            fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('kilataje', models.CharField(max_length=50)),
-            ],
-            options={
-            },
-            bases=(models.Model,),
-        ),
-        migrations.CreateModel(
-            name='TipoOro',
-            fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('descripcion', models.CharField(max_length=255)),
-                ('precioActual', models.DecimalField(max_digits=6, decimal_places=2)),
-            ],
-            options={
-                'verbose_name': 'Tipo deOro',
-                'verbose_name_plural': 'Tipos de Oro',
-            },
-            bases=(models.Model,),
-        ),
-        migrations.AddField(
-            model_name='joya',
-            name='kilataje',
-            field=models.ForeignKey(blank=True, to='inventario.Kilataje', null=True),
-            preserve_default=True,
-        ),
-        migrations.AddField(
-            model_name='joya',
-            name='proveedor',
-            field=models.ForeignKey(to='proveedores.Proveedor'),
-            preserve_default=True,
-        ),
-        migrations.AddField(
-            model_name='joya',
-            name='tipoOro',
-            field=models.ForeignKey(blank=True, to='inventario.TipoOro', null=True),
-            preserve_default=True,
-        ),
-    ]
+        # Deleting model 'TipoOro'
+        db.delete_table(u'inventario_tipooro')
+
+
+    models = {
+        u'inventario.joya': {
+            'Meta': {'object_name': 'Joya'},
+            'clave': ('django.db.models.fields.CharField', [], {'max_length': '15'}),
+            'costo': ('django.db.models.fields.DecimalField', [], {'max_digits': '9', 'decimal_places': '2'}),
+            'fechaCompra': ('django.db.models.fields.DateField', [], {}),
+            'foto': ('django.db.models.fields.files.ImageField', [], {'max_length': '100', 'null': 'True', 'blank': 'True'}),
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'kilataje': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['inventario.Kilataje']", 'null': 'True', 'blank': 'True'}),
+            'nombre': ('django.db.models.fields.CharField', [], {'max_length': '150', 'null': 'True', 'blank': 'True'}),
+            'peso': ('django.db.models.fields.DecimalField', [], {'max_digits': '9', 'decimal_places': '3'}),
+            'precioOroCompra': ('django.db.models.fields.DecimalField', [], {'max_digits': '5', 'decimal_places': '2'}),
+            'proveedor': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['proveedores.Proveedor']"}),
+            'tipoOro': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['inventario.TipoOro']", 'null': 'True', 'blank': 'True'})
+        },
+        u'inventario.kilataje': {
+            'Meta': {'object_name': 'Kilataje'},
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'kilataje': ('django.db.models.fields.CharField', [], {'max_length': '50'})
+        },
+        u'inventario.tipooro': {
+            'Meta': {'object_name': 'TipoOro'},
+            'descripcion': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'precioActual': ('django.db.models.fields.DecimalField', [], {'max_digits': '6', 'decimal_places': '2'})
+        },
+        u'proveedores.proveedor': {
+            'Meta': {'object_name': 'Proveedor'},
+            'correo': ('django.db.models.fields.EmailField', [], {'max_length': '75', 'null': 'True', 'blank': 'True'}),
+            'direccion': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'nombre': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'})
+        }
+    }
+
+    complete_apps = ['inventario']

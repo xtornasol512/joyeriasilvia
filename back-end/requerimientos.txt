@@ -1,23 +1,18 @@
-#django
-django==1.7.4
+#django core
+django==1.6.7
+south
+pillow
 
+#Servidor
 flup
 psycopg2
 
-
-#Con django 1.7 ya no es nesesario
-south
-
-pillow
-
-#Nesesarios para API
+#API Core
 djangorestframework
 markdown
 django-filter
 
-
 #opcionales para la api, aun no se para que serviran
-
 #(3.10+) - YAML content-type support.
 PyYAML
 #(0.3+) - XML content-type support.
