@@ -1,0 +1,8 @@
+#django core
+django==1.6.11
+south
+pillow
+
+#Servidor
+flup
+psycopg2
