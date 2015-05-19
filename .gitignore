@@ -1,7 +1,8 @@
 *.pyc
 temp/
 front-end/temp/
-front-end/css/prefixed/
+front-end/css/prefix/
+front-end/js/foundation/
 back-end/temp/
 bower_components/
 node_modules/

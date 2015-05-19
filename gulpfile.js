@@ -43,5 +43,5 @@ gulp.task('watch', function(){
 //Task default
 //Se ejecuta con $ gulp
 gulp.task('default',['styl', 'scripts', 'watch'], function(){
-    console.log('Welcome to Ontomex FrontEnd!');
+    console.log('Welcome to Joyeria Silvia FrontEnd!');
 });
