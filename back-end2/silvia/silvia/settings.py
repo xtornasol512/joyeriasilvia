@@ -9,6 +9,7 @@ ALLOWED_HOSTS = ['*']
 
 # Application definition
 INSTALLED_APPS = (
+    'djangocms_admin_style',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -17,8 +18,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'proveedores',
     'almacen',
-    #'clientes',
-    #'ventas',
+    'clientes',
+    'ventas',
+    'pagos',
     'south',
 )
 

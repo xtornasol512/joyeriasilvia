@@ -9,19 +9,16 @@ class Cliente(models.Model):
 class Telefono(models.Model):
     cliente = models.ForeignKey(Cliente)
     telefono = models.CharField(max_length=20)
-    nombre = models.CharField(blank=True, null=True, max_length=100)
+    tipo = models.ForeignKey("TipoTelefono", blank=True, null=True)
 
+class TipoTelefono(models.Model):
+    nombre = models.CharField(max_length=100)
+    def __unicode__(self):
+        return self.nombre
 
-class HistorialPago(models.Model):
-    cliente = models.ForeignKey("Cliente")
-    fecha = models.DateField(auto_now=True)
-    abono = models.DecimalField(max_digits=8, decimal_places=2)
+class Libreta(models.Model):
+    nombre = models.CharField(max_length=254)
+    cliente = models.ManyToManyField(Cliente)
+    notas = models.TextField(blank=True, null=True)
     def __unicode__(self):
-        return "%s %s $%s, restan:%s"%(self.cliente, self.fecha, self.abono, "Resta")
-    
-class Deuda(models.Model):
-    cliente = models.ForeignKey(Cliente)
-    deuda = models.DecimalField(max_digits=9, decimal_places=2)
-    def __unicode__(self):
-        return "%s, Deuda: $%s"%(self.cliente, self.deuda)
-    
+        return self.nombre
