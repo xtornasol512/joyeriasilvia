@@ -1,5 +1,5 @@
 #django core
-django==1.6.11
+django==1.6.4
 south
 pillow
 

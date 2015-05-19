@@ -1,9 +1,7 @@
-@import url(http://fonts.googleapis.com/css?family=Crimson+Text);
-body{
-    font-family: 'Crimson Text', serif;
-    
+i:after {
+content: " ";
+padding-right: 3px;
 }
-h1, h2, h3, h4, h5, p{
-    font-family: 'Crimson Text', serif;
-
-}
+.tab-bar h1{
+    font-weight: 300;
+}   

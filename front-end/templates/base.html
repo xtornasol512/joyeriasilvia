@@ -2,11 +2,14 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %}Joyeria Silvia{% endblock title %}</title>
     <!-- css/src es para Desarrollo cambia a css/*.min.css en deploy-->
-    <link rel="stylesheet" href="/css/src/normalize.css">
+    <link rel="stylesheet" href="/css/normalize.min.css">
     <link rel="stylesheet" href="/css/foundation.min.css">
-    <link rel="stylesheet" href="/css/src/joyeria.css">
+    <link rel="stylesheet" href="/css/icomoon.min.css">
+    <link rel="stylesheet" href="/css/joyeria.min.css">
+    <script src="/js/vendor/modernizr.js"></script>
     <!-- Bloque para metaTags de SEO -->
 
     <!-- Bloque para icons y más -->
@@ -38,7 +41,7 @@
     <header class="row">
         <div class="small-12 medium-8 medium-centered columns text-center">
             <h1>Base</h1>
-            <p><a class="button round" href="/">Regresar</a></p>
+            <p><a class="button round" href="/"><i class="i-reply"></i>Regresar</a></p>
         </div>
     </header>
     
