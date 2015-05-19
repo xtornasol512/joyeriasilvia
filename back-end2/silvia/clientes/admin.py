@@ -1,5 +1,16 @@
 from django.contrib import admin
-from clientes.models import Cliente, HistorialPago, Deuda
-admin.site.register(Cliente)
-admin.site.register(HistorialPago)
-admin.site.register(Deuda)
+from clientes.models import Cliente, Telefono, Libreta
+class TelefonoInLine(admin.TabularInline):
+    model = Telefono
+    extra = 2
+
+class ClienteAdmin(admin.ModelAdmin):
+    inlines = [TelefonoInLine]
+
+
+class LibretasAdmin(admin.ModelAdmin):
+    filter_horizontal =('cliente',)
+
+admin.site.register(Cliente, ClienteAdmin)
+admin.site.register(Telefono)
+admin.site.register(Libreta, LibretasAdmin)
