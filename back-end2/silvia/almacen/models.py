@@ -23,6 +23,7 @@ class Joya(models.Model):
     def __unicode__(self):
         return "%s %s %s %s %s %s"%(self.id, self.proveedor.clave, self.tipoJoya.clave,
             self.peso, self.precioVentaContado, self.precioVentaPagos)
+    #Metodos de Carro de compra, agregar o eliminar
 
 class TipoJoya(models.Model):
     clave = models.CharField(unique=True, max_length=5,
