@@ -51,13 +51,13 @@ def log_out(request):
     return HttpResponseRedirect('/')
 
 @login_required(login_url='/')
-def home(request):
+def home_v(request):
     ctx={}
-    return render_to_response('home/login.html', ctx,
+    return render_to_response('home/home.html', ctx,
                           context_instance=RequestContext(request))
 
 @login_required(login_url='/')
 def venta(request):
     ctx={}
-    return render_to_response('home/login.html', ctx,
+    return render_to_response('home/home.html', ctx,
                           context_instance=RequestContext(request))

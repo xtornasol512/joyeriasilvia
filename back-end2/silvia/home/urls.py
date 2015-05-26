@@ -5,7 +5,7 @@ admin.autodiscover()
 
 urlpatterns=patterns('home.views',
     url(r'^$','index'),
-    url(r'^home/$','home'),
+    url(r'^home/$','home_v'),
     url(r'^venta/$','venta'),
     url(r'^logout/$','log_out'),
     #url(r'^tag/(?P<tag>[\w\-]+)/$','tag_aviso'),

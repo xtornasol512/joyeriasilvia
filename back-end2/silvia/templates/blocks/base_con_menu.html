@@ -1,0 +1,52 @@
+{% extends "blocks/base.html" %}
+{% block contenido %}
+    <div class="off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+        <nav class="tab-bar">
+          <section class="left-small">
+            <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
+          </section>
+
+          <section class="middle tab-bar-section">
+            <h1 class="title">Joyeria Silvia</h1>
+          </section>
+
+          <section class="right-small">
+            <a class="right-off-canvas-toggle menu-icon" href="#"><span></span></a>
+          </section>
+        </nav>
+
+        <aside class="left-off-canvas-menu">
+          <ul class="off-canvas-list">
+            <li><label>Menu Principal</label></li>
+            <li><a href="/admin">Admin</a></li>
+            <li><a href="/admin/clientes/libreta/">Libretas</a></li>
+            <li><a href="/admin/clientes/">Clientes</a></li>
+            <li><a href="/admin/proveedores/proveedor/">Proveedores</a></li>
+            <li><a href="/admin/almacen/joya/">Joyas</a></li>
+            <li><a href="/admin/ventas/venta/">Venta</a></li>
+            <li><a href="/admin/pagos/deuda/">Cobranza</a></li>
+          </ul>
+        </aside>
+
+        <aside class="right-off-canvas-menu">
+          <ul class="off-canvas-list">
+            <li><label>Carrito de Compra</label></li>
+            <li><a href="#">Producto 1</a></li>
+            <li><a href="#">Producto 2</a></li>
+            <li><a href="#">Total: $ MontoTotal</a></li>
+            <li><a href="#">Num de Items : $NumItems</a></li>
+            <li class="active"><a class="button round" href="#">¡Comprar Ahora!</a></li>
+          </ul>
+        </aside>
+        <section class="main-section">
+        {% block content %}            
+        {% endblock content %}
+        </section>
+
+      <a class="exit-off-canvas"></a>
+
+      </div>
+    </div>
+    
+{% endblock contenido %}
