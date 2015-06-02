@@ -1,0 +1,43 @@
+{% extends "blocks/base_con_menu.html" %}
+{% block title %}Ventas{% endblock title %}
+{% block content %}
+    
+<div class="row">
+
+    <div class="medium-6 medium-centered columns">
+       <section class="row">
+              <article class="small-12 columns">
+                  <h2>Ejemplo de Interface de ventas</h2>
+              </article>
+              <article class="small-12 columns">
+                  <h2>Cliente: {%if carro%} {{carro.cliente}}{%else%}Seleccione un cliente{%endif%}
+                  <a href='/admin/clientes/cliente/'>
+                    <img src="http://cliparts.co/cliparts/Bia/Kz5/BiaKz5gaT.png" height="40" width="40">
+                  </a>
+                  </h2>
+              </article>
+              <article class="small-12 columns">
+                  <h2>lista de  Joyas
+                  <a href='/admin/almacen/joya/'>
+                    <img src="http://cliparts.co/cliparts/Bia/Kz5/BiaKz5gaT.png" height="40" width="40">
+                  </a>
+                  </h2>
+                  {%if lista%}
+                  <ul>
+                    {%for item in lista%}
+                    <li>{{item}}</li>
+                    {%endfor%}
+                  </ul>
+                  {%else%}
+                  <p>Seleccione algunas joyas para empezar</p>
+                  {%endif%}
+              </article>
+        </section> 
+    </div>
+
+</div>
+
+
+    
+    
+{% endblock content %}

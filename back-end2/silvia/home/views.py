@@ -10,7 +10,9 @@ from django.http import HttpResponsePermanentRedirect as redirect301
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-
+from almacen.models import Joya
+from temporales.models import CarroTemporal
+from clientes.models import Cliente
 
 def index(request):
     usuario=request.user
@@ -58,6 +60,57 @@ def home_v(request):
 
 @login_required(login_url='/')
 def venta(request):
-    ctx={}
-    return render_to_response('home/home.html', ctx,
+    error=''
+    idCliente=request.GET.get('idCliente','')
+    carroTems=CarroTemporal.objects.all()
+    if carroTems:
+        carro=carroTems[0]
+    else:
+        carro=None
+    if idCliente:
+        try:
+            clien=Cliente.objects.get(id=idCliente)
+        except  :
+            clien=None
+            error='Clave de Cliente no identificada'
+        if clien:
+            if carro:
+                carro.cliente=clien
+                carro.save()
+            else:
+                carro=CarroTemporal()
+                carro.cliente=clien
+                carro.save()
+    listaJoyas=Joya.objects.filter(en_carro=True)
+
+
+    ctx={'carro':carro, 'error':error,'lista':listaJoyas}
+    return render_to_response('home/ventas.html', ctx,
+                          context_instance=RequestContext(request))
+
+@login_required(login_url='/')
+def ventaAdd(request):
+    admin = request.GET.get('admin','')
+    add = request.GET.get('add','')
+    dell = request.GET.get('del','')
+    if admin:
+        jId=None
+        if add:
+            jId=add
+        if dell:
+            jId=dell
+        try:
+            joya=Joya.objects.get(id=jId)
+        except :
+            joya=None
+        if joya and add:
+            joya.en_carro=True
+            joya.save()
+        if joya and dell:
+            joya.en_carro=False
+            joya.save()
+        return HttpResponseRedirect('/admin/almacen/joya/')
+    else:
+        ctx={}
+        return render_to_response('home/home.html', ctx,
                           context_instance=RequestContext(request))

@@ -8,6 +8,7 @@ urlpatterns=patterns('home.views',
     url(r'^home/$','home_v'),
     url(r'^venta/$','venta'),
     url(r'^logout/$','log_out'),
+    url(r'^venta/addCarro$','ventaAdd'),
     #url(r'^tag/(?P<tag>[\w\-]+)/$','tag_aviso'),
     #url(r'^(?P<perfil>[\w\-]+)/$','perfil_view'),
 )

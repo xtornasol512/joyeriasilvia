@@ -21,6 +21,7 @@ INSTALLED_APPS = (
     'clientes',
     'ventas',
     'pagos',
+    'temporales',
     'south',
 )
 

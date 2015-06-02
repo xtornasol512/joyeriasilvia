@@ -21,12 +21,37 @@ class Joya(models.Model):
 
     existente = models.BooleanField(default=True)
     valorGO = models.DecimalField(blank=True, null=True, max_digits=9, decimal_places=2)
+    en_carro = models.BooleanField(default=False)
+    def carroCompra(self):
+        if self.en_carro:
+            return """
+            <a href='/venta/addCarro?del=%s&admin=True'>
+                <img src="/static/img/carro/del-cart.jpg" height="40" width="40">
+            </a>
+            """%self.id
+        else:
+            return """
+            <a href='/venta/addCarro?add=%s&admin=True'>
+                <img src="/static/img/carro/add-cart.jpg" height="40" width="40">
+            </a>
+            """%self.id
+    carroCompra.allow_tags = True
+    def regresar(self):
+        return """
+            <a href='/venta'>
+                <img src="http://www.rent-a-skibox.nl/media/wysiwyg/Return-icon.jpg" height="40" width="40">
+            </a>
+            """
+    regresar.allow_tags = True
     def __unicode__(self):
+        proveedor=""
+        if self.proveedor:
+            proveedor=self.proveedor.clave
         if self.tipoValor.kilataje:
-            return "%s %s %s %s %s %s %s"%(self.id, self.proveedor.clave, self.valorGO,
+            return "%s %s %s %s %s %s %s"%(self.id, proveedor, self.valorGO,
             self.peso, self.tipoValor.kilataje, self.precioVentaContado, self.precioVentaPagos)
         else:
-            return "%s %s %s %s %s %s"%(self.id, self.proveedor.clave, self.valorGO,
+            return "%s %s %s %s %s %s"%(self.id, proveedor, self.valorGO,
             self.peso, self.precioVentaContado, self.precioVentaPagos)
     #Metodos de Carro de compra, agregar o eliminar
 

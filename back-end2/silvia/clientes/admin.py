@@ -6,6 +6,7 @@ class TelefonoInLine(admin.TabularInline):
 
 class ClienteAdmin(admin.ModelAdmin):
     inlines = [TelefonoInLine]
+    list_display = ('__unicode__','notas', 'seleccionar' )
 
 
 class LibretasAdmin(admin.ModelAdmin):
