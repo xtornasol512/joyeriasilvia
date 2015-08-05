@@ -1,41 +1,99 @@
 {% extends "blocks/base_con_menu.html" %}
 {% block title %}Ventas{% endblock title %}
 {% block content %}
-    
-<div class="row">
-
-    <div class="medium-6 medium-centered columns">
-       <section class="row">
-              <article class="small-12 columns">
-                  <h2>Ejemplo de Interface de ventas</h2>
-              </article>
-              <article class="small-12 columns">
-                  <h2>Cliente: {%if carro%} {{carro.cliente}}{%else%}Seleccione un cliente{%endif%}
-                  <a href='/admin/clientes/cliente/'>
-                    <img src="http://cliparts.co/cliparts/Bia/Kz5/BiaKz5gaT.png" height="40" width="40">
-                  </a>
-                  </h2>
-              </article>
-              <article class="small-12 columns">
-                  <h2>lista de  Joyas
-                  <a href='/admin/almacen/joya/'>
-                    <img src="http://cliparts.co/cliparts/Bia/Kz5/BiaKz5gaT.png" height="40" width="40">
-                  </a>
-                  </h2>
-                  {%if lista%}
-                  <ul>
-                    {%for item in lista%}
-                    <li>{{item}}</li>
-                    {%endfor%}
-                  </ul>
-                  {%else%}
-                  <p>Seleccione algunas joyas para empezar</p>
-                  {%endif%}
-              </article>
-        </section> 
+<aside class="row padding-top">
+<div class="medium-6 medium-centered columns">
+  <form action=".">
+    <div class="row">
+      <div class="small-12 columns">
+        <div class="row collapse">
+          <div class="small-9 columns">
+            <input type="text" placeholder="Cliente">
+          </div>
+          <div class="small-3 columns">
+            <a href="#" class="button postfix">Buscar</a>
+          </div>
+        </div>
+      </div>
     </div>
-
+</form>
 </div>
+  
+</aside>
+
+<section class="row padding-top">
+  <div class="medium-8 medium-centered columns">
+    <div class="panel">
+      <h3>JESUS ALVARADO GARZON</h3>
+      <h4>Deuda Actual: <em>$500.00</em></h4>
+    </div>
+  </div>
+  <div class="medium-8 medium-centered columns">
+    <table>
+      <thead>
+        <tr>
+          
+          <th>DESCRIPCION</th>
+          <th width="200">PIEZAS</th>
+          <th width="150">COSTO</th>
+         
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+        <td>This is longer content Donec id elit non mi porta gravida at eget metus.</td>
+          <td> ID: ABC 12456 #FE34</td>
+          <td>$200.00</td>
+        </tr>
+        <tr>
+          
+          <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
+          <td>ID: CDE 12456 #234</td>
+          <td>$150.00</td>
+        </tr>
+        <tr>
+          
+          <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
+          <td>ID: XYZ 12456 #345</td>
+          <td>$100.00</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+  <div class="medium-8 medium-centered columns">
+    <form action=".">
+      <div class="row">
+        <div class="medium-8 medium-centered columns">
+          <div class="row collapse prefix-radius">
+            <div class="small-4 columns">
+              <span class="prefix">DESCUENTO</span>
+            </div>
+            <div class="small-8 columns">
+              <input type="text" placeholder="Descuento">
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="medium-8 medium-centered columns">
+    <div class="panel text-center">
+      <h2>TOTAL: <em>$950.50</em></h2>
+    </div>
+  </div> 
+  <div class="medium-8 medium-centered columns">
+  <textarea name="Descripcion" id="" rows="4" placeholder="Descripcion o Notas de la venta"></textarea>
+  </div>
+</section>
+<footer class="row padding-top">
+  <div class="medium-6 medium-centered columns text-center padding-top">
+    <form action=".">
+      <button class="round">GUARDAR VENTA</button>
+    </form>
+  </div>
+</footer>
+
 
 
     

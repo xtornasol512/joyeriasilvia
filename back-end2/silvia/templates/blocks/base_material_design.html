@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %}Joyeria Silvia{% endblock title %}</title>
-   
+    <!-- css/src es para Desarrollo cambia a css/*.min.css en deploy-->
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/normalize.min.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/foundation.min.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/icomoon.min.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/joyeria.min.css">
+    <script src="{{ STATIC_URL }}js/vendor/modernizr.js"></script>
     <!-- Bloque para metaTags de SEO -->
 
-    
-    <!-- Add to homescreen for Chrome on Android -->
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
     <!-- Bloque para icons y más -->
     <link rel="apple-touch-icon" sizes="57x57" href="{{ STATIC_URL }}icons/apple-touch-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="{{ STATIC_URL }}icons/apple-touch-icon-60x60.png">
@@ -33,14 +34,7 @@
     <meta name="msapplication-TileImage" content="{{ STATIC_URL }}icons/mstile-144x144.png">
     <meta name="msapplication-config" content="{{ STATIC_URL }}icons/browserconfig.xml">
     <meta name="theme-color" content="#3cd1b4">
-     <!-- css/src es para Desarrollo cambia a css/*.min.css en deploy-->
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/normalize.min.css">
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/foundation.min.css">
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/icomoon.min.css">
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/joyeria.min.css">
-    {% block headerplus %}        
-    {% endblock headerplus %}
-    <script src="{{ STATIC_URL }}js/vendor/modernizr.js"></script>
+
 </head>
 <body>
     <!-- Empieza bloque de HTML -->
